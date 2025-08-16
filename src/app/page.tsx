@@ -1,15 +1,29 @@
 import Header from "@/components/Header";
+import Carousel from "@/components/Carousel";
+import Services from "@/components/Services";
+import CountryChooser from "@/components/CountryChooser";
+import Features from "@/components/Features";
+import WhyConsider from "@/components/WhyConsider";
+import Stats from "@/components/Stats";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import FooterLinks from "@/components/FooterLinks";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
 
 export default function Home() {
   return (
-    <>
-        <Header />
-        <Navbar />
-      <main className="pt-[160px]">
-        <h1 className="text-2xl font-bold">Welcome to Home Page</h1>
-      </main>
-    </>
+    <div>
+      <Header />
+      <Navbar />
+      <Carousel />
+      <Services />
+      <CountryChooser />
+      <Features />
+      <WhyConsider />
+      <Stats />
+      <Contact />
+      <FooterLinks />
+      <Footer />
+    </div>
   );
 }
