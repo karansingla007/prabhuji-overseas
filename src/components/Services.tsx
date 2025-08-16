@@ -121,7 +121,7 @@ export default function Services() {
                   title={serviceOffered.title}
                   customClasses="bg-white"
                 >
-                  <div className="p-6 flex flex-col items-center justify-start min-h-36">
+                  <div className="p-6 flex flex-col items-center justify-start">
                     <div className="mt-2 text-sm text-gray-700 text-center">
                       {serviceOffered.description}
                     </div>
