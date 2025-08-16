@@ -7,9 +7,9 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FooterLinks from "@/components/FooterLinks";
 import Navbar from "@/components/Navbar";
-import CaurselFooter from "@/components/CarouselFooter";
 import WhyChoose from "@/components/WhyChoose";
 import OurIndustry from "@/components/OurIndustry";
+import CountryChooser from "@/components/CountryChooser";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
       <Header />
       <Navbar />
       <Carousel />
-      <CaurselFooter />
+      <CountryChooser />
       <Services />
       <WhyConsider />
       <WhyChoose />
