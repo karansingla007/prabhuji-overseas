@@ -1,24 +1,23 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Container from "./core/Container";
+import { API_BASE_URL } from "@/constants";
 
 type Slide = { image: string; title?: string; subtitle?: string };
 
-export default function Carousel({ apiUrl = "http://127.0.0.1:8000/carousel" }: { apiUrl?: string }) {
+export default function Carousel() {
+  const apiUrl = API_BASE_URL + "/carousel";
+
   const [slides, setSlides] = useState<Slide[]>([]);
   const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let mounted = true;
     setLoading(true);
 
     fetch(apiUrl)
       .then((res) => res.json())
       .then((payload) => {
-        if (!mounted) return;
-        console.debug("Carousel payload:", payload);
-
         // The API returns { statusCode, data: [...] , message }
         let items: unknown[] = [];
         if (Array.isArray(payload)) items = payload;
@@ -45,15 +44,16 @@ export default function Carousel({ apiUrl = "http://127.0.0.1:8000/carousel" }: 
       .catch((err) => {
         console.warn("Carousel fetch failed:", err);
         setSlides([]);
-      })
-      .finally(() => {
-        if (mounted) setLoading(false);
       });
 
     return () => {
-      mounted = false;
+      setSlides([]);
+      setCurrent(0);
+      setLoading(false);
     };
-  }, [apiUrl]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // auto advance every 5s
   useEffect(() => {
@@ -70,19 +70,27 @@ export default function Carousel({ apiUrl = "http://127.0.0.1:8000/carousel" }: 
         {/* Hero image */}
         <div className="w-full h-[520px] md:h-[520px] relative overflow-hidden">
           {loading ? (
-            <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white">Loading...</div>
+            <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white">
+              Loading...
+            </div>
           ) : active ? (
             <>
               {/* background image */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={active.image} alt={active.title ?? "slide"} className="absolute inset-0 w-full h-full object-cover" />
+              <img
+                src={active.image}
+                alt={active.title ?? "slide"}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
 
               {/* left text overlay */}
               <div className="absolute inset-0 flex items-center">
                 <Container>
                   <div className="max-w-2xl text-left text-white">
                     <p className="text-sm tracking-wider uppercase mb-4">Study Abroad</p>
-                    <h1 className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg">{active.title}</h1>
+                    <h1 className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg">
+                      {active.title}
+                    </h1>
                     <p className="mt-4 text-lg md:text-xl opacity-95">{active.subtitle}</p>
 
                     <div className="mt-8 flex items-center gap-6">
@@ -91,7 +99,9 @@ export default function Carousel({ apiUrl = "http://127.0.0.1:8000/carousel" }: 
                       </button>
 
                       <a href="tel:+919518420838" className="flex items-center gap-3">
-                        <span className="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center text-white">📞</span>
+                        <span className="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center text-white">
+                          📞
+                        </span>
                         <div className="text-white">
                           <div className="text-sm">Call Us Now</div>
                           <div className="font-bold">+91 9518420838</div>
@@ -115,7 +125,9 @@ export default function Carousel({ apiUrl = "http://127.0.0.1:8000/carousel" }: 
               </div>
             </>
           ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white">No slides available</div>
+            <div className="w-full h-full flex items-center justify-center bg-gray-800 text-white">
+              No slides available
+            </div>
           )}
         </div>
       </div>
