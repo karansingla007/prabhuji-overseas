@@ -7,38 +7,42 @@ export default function OurIndustry() {
 
   return (
     <Container>
-      <section aria-label="our industry" className="py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-8">
+      <section aria-label="our industry" className="py-8 mt-4 mb-16">
+        <div className="flex gap-8">
           {/* left image */}
-          <div className="w-144 h-108 relative rounded">
-            <Image src="/images/logo.png" alt="person holding globe and passport" fill priority />
+          <div className="w-144 md:w-1/2">
+            <div className="relative rounded w-144 h-108 mx-auto md:mt-32">
+              <Image src="/images/logo.png" alt="person holding globe and passport" fill priority />
+            </div>
           </div>
 
           {/* right content */}
-          <div className="relative">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
-              Our Industry-Explicit
-              <br />
-              Competence
-            </h2>
+          <div className="relative w-full md:w-1/2">
+            <div className="z-10 p-6 md:px-12 md:py-6 bg-white">
+              <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+                Our Industry-Explicit
+                <br />
+                Competence
+              </h2>
 
-            <p className="mt-6 text-slate-500 max-w-lg">
-              We are dedicated to guiding you through every step of the immigration process with
-              expertise and care. Whether you are looking to obtain a visa, permanent residency, or
-              citizenship, our team of experienced professionals provides personalized services
-              tailored to your unique situation.
-            </p>
+              <p className="mt-6 text-slate-500">
+                We are dedicated to guiding you through every step of the immigration process with
+                expertise and care. Whether you are looking to obtain a visa, permanent residency,
+                or citizenship, our team of experienced professionals provides personalized services
+                tailored to your unique situation.
+              </p>
+            </div>
+
+            {/* red folded corner (rotated square) */}
+            <div
+              className="absolute top-67 -left-9 size-16 bg-red-700 rotate-60 transform -z-10"
+              aria-hidden
+            />
 
             {/* overlapping amber box */}
             <div className="mt-8 md:mt-12">
-              <div className="relative md:absolute md:-left-44 md:top-28 z-20">
-                {/* red folded corner (rotated square) */}
-                <div
-                  className="absolute -left-6 -top-6 w-8 h-8 bg-red-700 rotate-45 transform"
-                  aria-hidden
-                />
-
-                <div className="bg-amber-600 text-white p-6 md:p-8 rounded-tr-lg rounded-br-[80px] rounded-bl-lg rounded-tl-lg shadow-md w-[320px] md:w-[640px]">
+              <div className="relative md:absolute md:-left-12 md:top-72 z-20">
+                <div className="bg-orange-400 z-20 text-white p-6 md:p-8 rounded-xs rounded-br-[48px] shadow-md w-[320px] md:w-[640px]">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <ul className="space-y-4">
                       {leftServices.map((s) => (
