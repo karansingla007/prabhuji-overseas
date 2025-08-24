@@ -16,7 +16,7 @@ export default function CountryChooser() {
             aria-label="Poland visa"
             className="w-full h-14 bg-amber-600 text-white font-semibold uppercase tracking-wide rounded shadow-md hover:opacity-95 transition"
           >
-            POLAN VISA
+            POLAND VISA
           </button>
         </div>
       </div>

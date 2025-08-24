@@ -29,7 +29,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/about" className="hover:text-orange-600">
+            <Link href="/about_us" className="hover:text-orange-600">
               ABOUT US
             </Link>
           </li>
@@ -58,7 +58,7 @@ export default function Navbar() {
             </ul>
           </li>
           <li>
-            <Link href="/tickets" className="hover:text-orange-600">
+            <Link href="/air_tickets" className="hover:text-orange-600">
               AIR TICKETS
             </Link>
           </li>
